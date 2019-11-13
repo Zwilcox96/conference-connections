@@ -3,6 +3,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
 
+The authentication is a modified version of [this tutorial](https://www.sitepoint.com/user-authentication-mean-stack/). You can find the repo [here](https://github.com/sitepoint-editors/MEAN-stack-authentication).
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
