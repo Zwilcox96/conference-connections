@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService, UserDetails } from '../authentication.service';
+import {AuthenticationService, TokenPayload, UserDetails} from '../authentication.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,9 +9,19 @@ import { AuthenticationService, UserDetails } from '../authentication.service';
 export class ProfileComponent implements OnInit {
 
   details: UserDetails;
+  confirmPassword: '';
+  credentials: TokenPayload = {
+    email: '',
+    password: ''
+  };
+  passwordsMatch = this.confirmPassword === this.credentials.password;
+  failedToResetPassword: '';
 
   constructor(private auth: AuthenticationService) {}
 
+  resetPassword() {
+    this.auth.resetPassword(this.credentials).subscribe({error: e => console.error(e)});
+  }
   ngOnInit() {
     this.auth.profile().subscribe(user => {
       this.details = user;

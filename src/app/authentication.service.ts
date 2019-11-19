@@ -65,11 +65,15 @@ export class AuthenticationService {
     }
   }
 
-  private request(method: 'post'|'get', type: 'login'|'register'|'profile', user?: TokenPayload): Observable<any> {
+  private request(method: 'post'|'get', type: 'login'|'register'|'profile'|'user-password-reset', user?: TokenPayload): Observable<any> {
     let base;
 
     if (method === 'post') {
-      base = this.http.post(`${environment.apiUrl}/api/${type}`, user);
+      if (type === 'user-password-reset') {
+        base = this.http.post(`${environment.apiUrl}/api/${type}`, user, { headers: { Authorization: `Bearer ${this.getToken()}` }});
+      } else {
+        base = this.http.post(`${environment.apiUrl}/api/${type}`, user);
+      }
     } else {
       base = this.http.get(`${environment.apiUrl}/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
     }
@@ -96,6 +100,10 @@ export class AuthenticationService {
 
   public profile(): Observable<any> {
     return this.request('get', 'profile');
+  }
+
+  public resetPassword(user: TokenPayload): Observable<any> {
+    return this.request('post', 'user-password-reset', user);
   }
 
   public logout(): void {
