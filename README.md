@@ -1,6 +1,8 @@
 
 # ConferenceConnections
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Zwilcox96_conference-connections&metric=alert_status)](https://sonarcloud.io/dashboard?id=Zwilcox96_conference-connections) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Zwilcox96_conference-connections&metric=security_rating)](https://sonarcloud.io/dashboard?id=Zwilcox96_conference-connections) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Zwilcox96_conference-connections&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=Zwilcox96_conference-connections) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Zwilcox96_conference-connections&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=Zwilcox96_conference-connections)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
 
 The authentication is a modified version of [this tutorial](https://www.sitepoint.com/user-authentication-mean-stack/). You can find the repo [here](https://github.com/sitepoint-editors/MEAN-stack-authentication).
