@@ -1,0 +1,14 @@
+.fill-empty-space {
+  flex: 1 1 auto;
+}
+.fill-screen {
+  height: 100%;
+  background-color: lightgray;
+}
+router-outlet {
+  background-color: lightgray;
+}
+*:focus {
+  outline: none !important;
+  border: 0 !important;
+}

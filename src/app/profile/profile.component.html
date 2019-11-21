@@ -4,16 +4,37 @@
     <div class="col-md-6">
 
       <h1 class="form-signin-heading">Your profile</h1>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ details?.name }}</mat-card-title>
+          <mat-card-subtitle>{{ details?.email }}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
 
       <div class="form-horizontal">
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Full name</label>
-          <p class="form-control-static">{{ details?.name }}</p>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Email</label>
-          <p class="form-control-static">{{ details?.email }}</p>
-        </div>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Reset Password
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <form (submit)="resetPassword()">
+            <div class="form-group" hidden="true">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" [(ngModel)]="credentials.email">
+            </div>
+            <div class="form-group">
+              <label for="password">New Password</label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="credentials.password">
+            </div>
+            <div class="form-group">
+              <label for="confirm-password">Confirm New Password</label>
+              <input type="password" class="form-control" id="confirm-password" name="password" placeholder="Password" [(ngModel)]="confirmPassword">
+            </div>
+            <button  mat-raised-button type="submit" class="btn btn-default" color="primary" [disabled]="!(credentials.password === confirmPassword)">RESET PASSWORD</button>
+          </form>
+        </mat-expansion-panel>
+        <div class="alert alert-danger" *ngIf="failedToResetPassword"> Unable to reset password. Please contact your system administrator</div>
       </div>
 
     </div>
