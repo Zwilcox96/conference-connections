@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<mat-toolbar color="primary">
+<mat-toolbar class="nav-w" color="primary">
  <mat-toolbar-row>
    <div class="span" routerLink="/"> Conference connections</div>
    <span class="fill-empty-space"></span>
@@ -14,3 +14,10 @@
   <router-outlet></router-outlet>
 </span>
 
+<style>
+.nav-w {
+  box-shadow: 0px 0px 5px black;
+  background: linear-gradient(45deg, rgba(1, 38, 240, 0.46), rgba(94, 90, 208, 0.97));
+  text-shadow: 0px 0px 3px black;
+}
+</style>

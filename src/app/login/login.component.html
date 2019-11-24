@@ -1,4 +1,4 @@
-  <div class="row justify-content-center flex-grow-1">
+  <div class="login-w">
 
     <div class="col-md-6">
 
@@ -14,9 +14,38 @@
           <label for="password">Password</label>
           <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="credentials.password">
         </div>
-        <button  mat-raised-button type="submit" class="btn btn-default" color="primary">Sign in!</button>
+        <button  mat-raised-button type="submit" class="btn btn-default login-button" color="primary">Sign in!</button>
       </form>
 
     </div>
   </div>
+
+<!-- Will componentize styles into a folder/file structure later -->
+
+  <style>
+  .login-w {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 0px 0px 5px black;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .login-button {
+    width: 185px;
+    padding: 5px;
+    font-size: 16px;
+    background: linear-gradient(45deg, rgba(1, 38, 240, 0.96), rgba(94, 90, 208, 0.97));
+    color: white;
+    text-shadow: 0px 0px 3px black;
+    box-shadow: 0px 0px 7px black;
+    border-radius: 20px;
+    transition: .4s; 
+  }
+  .login-button:hover {
+    background: grey;
+  }
+  </style>
 
