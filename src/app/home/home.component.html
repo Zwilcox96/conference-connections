@@ -1,24 +1,63 @@
 <div class="container">
-  <div class="row">
+  <div class="row home-w">
     <div class="col-md-12">
-      <div style="text-align:center">
+      <div style="text-align: center;">
         <h1>
-          Welcome to Conference connections!
+          Conference connections
         </h1>
-        <img width="300" alt="Angular Logo"
-             src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
         <div class="alert alert-success" *ngIf="auth.isLoggedIn()">You are Logged In!</div>
         <div *ngIf="!auth.isLoggedIn()">
-         <p>You are not logged in</p>
-          <button mat-raised-button routerLink="/login">Log In!</button>
+         <p class="home-subtext">You are not logged in</p>
+          <button mat-raised-button routerLink="/login" class="login-button">Log In!</button>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <h2 style="text-align: center">Now with bootstrap!!</h2>
-    </div>
-  </div>
 </div>
+<div class="social-media">
+    <a href="#" target="_blank"><i class="fa fa-twitter"></i></a> 
+    <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+</div>
+
+<!-- Will componentize styles into a folder/file structure later -->
+
+<style>
+  .home-w {
+    color: white;
+    text-shadow: 0px 0px 3px black;
+    font-family: sans-serif;
+    margin-top: 25px;
+    height: 100%;
+    padding: 15px;
+  }
+  .home-subtext {
+    color: #f6ebd6;
+    font-size: 20px;
+  }
+  .login-button {
+    width: 185px;
+    padding: 5px;
+    font-size: 16px;
+    background: linear-gradient(45deg, rgba(1, 38, 240, 0.96), rgba(94, 90, 208, 0.97));
+    color: white;
+    text-shadow: 0px 0px 3px black;
+    box-shadow: 0px 0px 7px black;
+    border-radius: 20px;
+    transition: .4s; 
+  }
+  .login-button:hover {
+    background: grey;
+  }
+  .social-media {
+    display: flex;
+    position: absolute;
+    top: 93%;
+    width: 55px;
+    justify-content: space-between;
+    margin-left: 25px;
+  }
+  .social-media i {
+    color: white;
+    transition: .4s;
+  }
+</style>
