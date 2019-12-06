@@ -2,6 +2,7 @@
 <mat-toolbar color="primary">
  <mat-toolbar-row>
    <div class="span" routerLink="/"> Conference connections</div>
+   <button mat-button routerLink="/attendees"> Attendees </button>
    <span class="fill-empty-space"></span>
    <button mat-stroked-button [mat-menu-trigger-for]="appMenu" *ngIf="auth.isLoggedIn()">Hello, {{auth.getUserDetails().name}}</button>
    <mat-menu #appMenu="matMenu">

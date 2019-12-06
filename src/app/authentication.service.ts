@@ -65,17 +65,18 @@ export class AuthenticationService {
     }
   }
 
-  private request(method: 'post'|'get', type: 'login'|'register'|'profile'|'user-password-reset', user?: TokenPayload): Observable<any> {
+  // tslint:disable-next-line:max-line-length
+  private request(method: 'post'|'get', type: 'auth/login'|'auth/register'|'profile'|'profile/user-password-reset', user?: TokenPayload): Observable<any> {
     let base;
 
     if (method === 'post') {
-      if (type === 'user-password-reset') {
+      if (type === 'profile/user-password-reset') {
         base = this.http.post(`${environment.apiUrl}/api/${type}`, user, { headers: { Authorization: `Bearer ${this.getToken()}` }});
       } else {
         base = this.http.post(`${environment.apiUrl}/api/${type}`, user);
       }
     } else {
-      base = this.http.get(`${environment.apiUrl}/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
+      base = this.http.get(`${environment.apiUrl}/api/${type}`);
     }
 
     const request = base.pipe(
@@ -91,11 +92,11 @@ export class AuthenticationService {
   }
 
   public register(user: TokenPayload): Observable<any> {
-    return this.request('post', 'register', user);
+    return this.request('post', 'auth/register', user);
   }
 
   public login(user: TokenPayload): Observable<any> {
-    return this.request('post', 'login', user);
+    return this.request('post', 'auth/login', user);
   }
 
   public profile(): Observable<any> {
@@ -103,7 +104,7 @@ export class AuthenticationService {
   }
 
   public resetPassword(user: TokenPayload): Observable<any> {
-    return this.request('post', 'user-password-reset', user);
+    return this.request('post', 'profile/user-password-reset', user);
   }
 
   public logout(): void {

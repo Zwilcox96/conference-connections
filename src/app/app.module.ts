@@ -8,18 +8,22 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from './auth-guard.service';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatMenuModule, MatPaginatorModule, MatTableModule, MatToolbarModule} from '@angular/material';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HomeComponent } from './home/home.component';
+import { AuthInterceptor } from './auth.interceptor';
+import { AttendeesComponent } from './attendees/attendees.component';
+import {AttendeesService} from './attendees.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] }
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
+  { path: 'attendees', component: AttendeesComponent }
 ];
 
 @NgModule({
@@ -28,7 +32,8 @@ const routes: Routes = [
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    AttendeesComponent
   ],
   imports: [
     BrowserModule,
@@ -40,10 +45,20 @@ const routes: Routes = [
     MatButtonModule,
     MatMenuModule,
     MatExpansionModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
-  providers: [AuthenticationService,
-    AuthGuardService],
+  providers: [
+    AuthenticationService,
+    AuthGuardService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    AttendeesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {title = 'conference-connections'; }

@@ -1,4 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body { min-height: 100vh;
+  height: auto;
+  margin: 0; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #fafafa !important;}
+
+.fill-empty-space {
+  flex: 1 1 auto;
+}
+
+*:focus {
+  outline: none !important;
+  border: 0 !important;
+}

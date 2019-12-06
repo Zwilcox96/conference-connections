@@ -1,0 +1,13 @@
+table {
+  width: 100%;
+  overflow: auto;
+}
+.table-container {
+  position: relative;
+  max-height: 80vh;
+  overflow: auto;
+}
+
+button {
+  margin-left: 5px;
+}

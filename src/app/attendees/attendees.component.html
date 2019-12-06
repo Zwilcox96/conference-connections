@@ -1,0 +1,51 @@
+<mat-toolbar>
+  <span class="fill-empty-space"></span>
+  <button mat-raised-button color="primary" [mat-menu-trigger-for]="attendeeMenu">ADD USER(S)</button>
+  <button mat-stroked-button color="primary" (click)="refreshAttendeeData()">RELOAD</button>
+  <mat-menu #attendeeMenu="matMenu">
+    <button mat-menu-item>Add User</button>
+    <button mat-menu-item>Upload CSV</button>
+  </mat-menu>
+</mat-toolbar>
+<div class="table-container">
+  <table mat-table [dataSource]="dataSource">
+    <caption>Table of attendees that have been added to the database</caption>
+    <ng-container matColumnDef="name">
+      <th scope="col" mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let attendee"> {{attendee.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th scope="col" mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let attendee"> {{attendee.email}} </td>
+    </ng-container>
+    <ng-container matColumnDef="phone">
+      <th scope="col" mat-header-cell *matHeaderCellDef> Phone </th>
+      <td mat-cell *matCellDef="let attendee"> {{attendee.formattedPhoneNumber}} </td>
+    </ng-container>
+    <ng-container matColumnDef="contactPreference">
+      <th scope="col" mat-header-cell *matHeaderCellDef> Contact Preference </th>
+      <td mat-cell *matCellDef="let attendee"> {{attendee.contactPreferenceEmail?'Email':'Phone'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="badge">
+      <th scope="col" mat-header-cell *matHeaderCellDef> Badge # </th>
+      <td mat-cell *matCellDef="let attendee"> {{attendee.badge}} </td>
+    </ng-container>
+    <ng-container matColumnDef="age">
+      <th scope="col" mat-header-cell *matHeaderCellDef> age </th>
+      <td mat-cell *matCellDef="let attendee"> {{attendee.age}} </td>
+    </ng-container>
+    <ng-container matColumnDef="gender">
+      <th scope="col" mat-header-cell *matHeaderCellDef> Gender</th>
+      <td mat-cell *matCellDef="let attendee"> {{attendee.gender}} </td>
+    </ng-container>
+    <ng-container matColumnDef="genderSeeking">
+      <th scope="col" mat-header-cell *matHeaderCellDef> Gender Seeking</th>
+      <td mat-cell *matCellDef="let attendee"> {{attendee.genderSeeking}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row, columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<mat-paginator [pageSizeOptions]="[25, 30, 50]" showFirstLastButtons></mat-paginator>
